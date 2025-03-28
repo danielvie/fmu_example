@@ -7,13 +7,17 @@ tasks:
   build:
     aliases: ["b"]
     cmds:
+      # building libraries
       - zig build
-      # creating folder for results
+      # creating fmu
+      - mkdir -p z_fmu_out/binaries/win32
       - mkdir -p z_fmu_out/binaries/win64
-      - cp zig-out/bin/BouncingBall.dll z_fmu_out/binaries/win64
+      - mkdir -p z_fmu_out/binaries/linux64
+      - cp zig-out/x86-windows/BouncingBall.dll z_fmu_out/binaries/win32
+      - cp zig-out/x86_64-windows/BouncingBall.dll z_fmu_out/binaries/win64
+      - cp zig-out/x86_64-linux-musl/libBouncingBall.so z_fmu_out/binaries/linux64/BouncingBall.so
       - cp -r src/*.cpp z_fmu_out/
       - cp -r src/modelDescription.xml z_fmu_out/
-      # creating zip/fmu file
       - 7z a -tzip BouncingBall.fmu ./z_fmu_out/*
 
   clean:
