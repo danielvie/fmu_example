@@ -13,4 +13,5 @@ tasks:
   clean:
     aliases: ["c"]
     cmds:
-     - 
+     - rm -rf *.fmu
+    ignore_error: true

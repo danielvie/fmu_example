@@ -10,6 +10,12 @@ tasks:
     cmds:
      - cd cpp && task
      - cd python_test && task
+     
+  docker:
+    aliases: ["d"]
+    cmds:
+      - docker build -t python_fmu_test .
+      - docker run -v .\\python_test:/app python_fmu_test
 
   clean:
     aliases: ["c"]
