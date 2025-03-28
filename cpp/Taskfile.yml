@@ -1,0 +1,22 @@
+version: '3'
+
+tasks:
+  default:
+    deps: ["b"]
+
+  build:
+    aliases: ["b"]
+    cmds:
+      - zig build
+      # creating folder for results
+      - mkdir -p z_fmu_out/binaries/win64
+      - cp zig-out/bin/BouncingBall.dll z_fmu_out/binaries/win64
+      - cp -r src/*.cpp z_fmu_out/
+      - cp -r src/modelDescription.xml z_fmu_out/
+      # creating zip/fmu file
+      - 7z a -tzip BouncingBall.fmu ./z_fmu_out/*
+
+  clear:
+    aliases: ["c"]
+    cmds:
+      - rm -rf build
