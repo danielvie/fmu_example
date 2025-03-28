@@ -16,7 +16,11 @@ tasks:
       # creating zip/fmu file
       - 7z a -tzip BouncingBall.fmu ./z_fmu_out/*
 
-  clear:
+  clean:
     aliases: ["c"]
     cmds:
-      - rm -rf build
+      - rm -rf .zig-cache
+      - rm -rf zig-out
+      - rm -rf z_fmu_out
+      - rm -rf *.fmu
+    ignore_error: true

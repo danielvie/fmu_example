@@ -10,3 +10,9 @@ tasks:
     cmds:
      - cd cpp && task
      - cd python_test && task
+
+  clean:
+    aliases: ["c"]
+    cmds:
+     - cd cpp && task clean
+     - cd python_test && task clean

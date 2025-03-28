@@ -9,3 +9,8 @@ tasks:
     aliases: ["m"]
     cmds:
      - uv run main.py
+
+  clean:
+    aliases: ["c"]
+    cmds:
+     - 

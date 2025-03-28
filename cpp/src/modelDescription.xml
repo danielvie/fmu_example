@@ -2,15 +2,9 @@
 <fmiModelDescription
     fmiVersion="2.0"
     modelName="BouncingBall"
-    guid="{256df713-c4ed-49a9-9102-4510eb91526e}"
+    guid="{5eda2e7e-08ca-470f-9b13-bd1e21d3485e}"
     description="A simple bouncing ball model"
-    author="Daniel Vieira"
-    version="1.0"
-    generationTool="Manual"
-    generationDateAndTime="2025-03-27T12:00:00Z"
-    variableNamingConvention="flat"
-    numberOfEventIndicators="1">
-
+    version="1.0">
     <CoSimulation
         modelIdentifier="BouncingBall"
         canHandleVariableCommunicationStepSize="true"

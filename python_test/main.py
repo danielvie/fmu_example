@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 def main():
 
     # loading fmu
-    fmu_path = '../cpp/BouncingBall_zig.fmu'
+    fmu_path = '../cpp/BouncingBall.fmu'
+    
+    print(f'reading {fmu_path}...')
     assert Path(fmu_path).is_file() == True
 
     # dumping model info
