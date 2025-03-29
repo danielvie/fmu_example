@@ -1,7 +1,25 @@
 # from fmpy import read_model_description, simulate_fmu
-import fmpy
 from pathlib import Path
+import fmpy
 import matplotlib.pyplot as plt
+
+class Result:
+    def __init__(self, value, error):
+        self.value = value
+        self.error = error
+
+    def ok(self):
+        return self.error is None
+
+    def fail(self):
+        return self.error is not None
+
+def try_catch(fun: callable):
+    try:
+        result = fun()
+        return Result(result, None)
+    except Exception as e:
+        return Result(None, e)
 
 def main():
 
@@ -15,12 +33,16 @@ def main():
     fmpy.dump(fmu_path)
 
     # simulate
-    result = fmpy.simulate_fmu(fmu_path, start_time=0.0, stop_time=10.0, step_size=0.01)
+    result = try_catch(lambda: fmpy.simulate_fmu(fmu_path, start_time=0.0, stop_time=10.0, step_size=0.01))
+    
+    if result.fail():
+        print("ERROR: ", result.error)
+        return
     
     # extract results
-    time = result['time']
-    height = result['h']
-    velocity = result['v']
+    time = result.value['time']
+    height = result.value['h']
+    velocity = result.value['v']
 
     # plot
     plt.figure()

@@ -2,6 +2,24 @@
 import fmpy
 from pathlib import Path
 
+class Result:
+    def __init__(self, value, error):
+        self.value = value
+        self.error = error
+
+    def ok(self):
+        return self.error is None
+
+    def fail(self):
+        return self.error is not None
+
+def try_catch(fun: callable):
+    try:
+        result = fun()
+        return Result(result, None)
+    except Exception as e:
+        return Result(None, e)
+
 def main():
 
     # loading fmu
@@ -12,12 +30,16 @@ def main():
 
 
     # simulate
-    result = fmpy.simulate_fmu(fmu_path, start_time=0.0, stop_time=5.0, step_size=0.01)
+    result = try_catch(lambda: fmpy.simulate_fmu(fmu_path, start_time=0.0, stop_time=5.0, step_size=0.01))
     
+    if result.fail():
+        print('this went wrong: ', result.error)
+        return
+
     # extract results
-    time = result['time']
-    height = result['h']
-    velocity = result['v']
+    time = result.value['time']
+    height = result.value['h']
+    velocity = result.value['v']
     
     for t,h,v in zip(time, height, velocity):
         print(f'{t:5.2f}, {h:7.2f}, {v:7.2f}')

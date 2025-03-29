@@ -10,6 +10,12 @@ tasks:
     cmds:
      - cd cpp && task
      - cd python_test && task
+
+     
+  build:
+    aliases: ["b"]
+    cmds:
+      - cd cpp && task build
      
   docker:
     aliases: ["d"]

@@ -9,15 +9,16 @@ tasks:
     cmds:
       # building libraries
       - zig build
-      # creating fmu
-      - mkdir -p z_fmu_out/binaries/win32
+      # copying windows lib
       - mkdir -p z_fmu_out/binaries/win64
-      - mkdir -p z_fmu_out/binaries/linux64
-      - cp zig-out/x86-windows/BouncingBall.dll z_fmu_out/binaries/win32
       - cp zig-out/x86_64-windows/BouncingBall.dll z_fmu_out/binaries/win64
+      # copying linux lib
+      - mkdir -p z_fmu_out/binaries/linux64
       - cp zig-out/x86_64-linux-gnu/libBouncingBall.so z_fmu_out/binaries/linux64/BouncingBall.so
+      # copying source files
       - cp -r src/*.cpp z_fmu_out/
       - cp -r src/modelDescription.xml z_fmu_out/
+      # creating zipfile
       - 7z a -tzip BouncingBall.fmu ./z_fmu_out/*
       # copying result to `fmu_out`
       - mkdir -p ../cpp_fmu_out
