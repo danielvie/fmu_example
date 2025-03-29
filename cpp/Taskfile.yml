@@ -19,7 +19,9 @@ tasks:
       - cp -r src/*.cpp z_fmu_out/
       - cp -r src/modelDescription.xml z_fmu_out/
       - 7z a -tzip BouncingBall.fmu ./z_fmu_out/*
-      - cp BouncingBall.fmu ../python_test/
+      # copying result to `fmu_out`
+      - mkdir -p ../cpp_fmu_out
+      - cp BouncingBall.fmu ../cpp_fmu_out/
 
   clean:
     aliases: ["c"]

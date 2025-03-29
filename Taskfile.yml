@@ -15,7 +15,7 @@ tasks:
     aliases: ["d"]
     cmds:
       - docker build -t python_fmu_test .
-      - docker run -v .\\python_test:/app python_fmu_test
+      - docker run -v .\\cpp_fmu_out:/app/cpp_fmu_out python_fmu_test
 
   clean:
     aliases: ["c"]

@@ -15,4 +15,12 @@ RUN pip install -U uv \
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
     
-CMD [ "bash", "-c", "uv run main.py" ]
+# Copy python project
+# COPY ./python_test/.python_version .
+COPY python_test/.python-version .
+COPY python_test/main_docker.py .
+COPY python_test/pyproject.toml .
+
+RUN uv sync
+    
+CMD [ "bash", "-c", "uv run main_docker.py" ]
