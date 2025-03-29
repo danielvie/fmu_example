@@ -22,3 +22,5 @@ tasks:
     cmds:
      - cd cpp && task clean
      - cd python_test && task clean
+     - rm -rf cpp_fmu_out/
+    ignore_error: true
