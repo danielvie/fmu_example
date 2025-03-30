@@ -14,6 +14,7 @@ This project requires the following dependencies:
 - Python 3.10+  
 - uv  
 - Zig 0.14.0
+- 7zip
 - Docker (optional)
 
 Instructions for installing each are provided below.
@@ -50,6 +51,15 @@ Instructions for installing each are provided below.
   - Verify: (should output `0.14.0`).
   ```powershell
   zig version
+  ```
+
+### ➡️ **7-Zip 24.08**  
+  A free and open-source file archiver used for creating and extracting compressed archives like ZIP and FMU files.  
+  **Installation**:  
+  - Download from [7-zip.org](https://www.7-zip.org/download.html).  
+  - Verify: (should output `7-Zip 24.08 (x64)` or similar, depending on your architecture).  
+  ```powershell
+  7z
   ```
 
 ### ➡️ **Docker**  

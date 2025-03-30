@@ -9,6 +9,8 @@ wheels/
 
 # Virtual environments
 .venv
+.python-version
+uv.lock
 
 # Folders
 cpp_fmu_out/
