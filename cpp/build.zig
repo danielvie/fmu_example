@@ -16,9 +16,22 @@ pub fn build(b: *std.Build) !void {
             .optimize = optimize,
         });
 
+        const cppflags = [_][]const u8{
+            "-Wall",
+            "-Wextra",
+            "-std=c++20",
+            "-O2",
+        };
+
         lib.linkLibCpp();
-        lib.addCSourceFile(.{ .file = b.path("src/BouncingBall.cpp") });
-        lib.addCSourceFile(.{ .file = b.path("src/fmi2Functions.cpp") });
+        lib.addCSourceFile(.{
+            .file = b.path("src/BouncingBall.cpp"),
+            .flags = &cppflags,
+        });
+        lib.addCSourceFile(.{
+            .file = b.path("src/fmi2Functions.cpp"),
+            .flags = &cppflags,
+        });
         lib.addIncludePath(b.path("fmi2/headers/"));
 
         const target_output = b.addInstallArtifact(lib, .{
