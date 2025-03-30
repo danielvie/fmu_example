@@ -32,6 +32,7 @@ pub fn build(b: *std.Build) !void {
             .file = b.path("src/fmi2Functions.cpp"),
             .flags = &cppflags,
         });
+        lib.addIncludePath(b.path("include"));
         lib.addIncludePath(b.path("fmi2/headers/"));
 
         const target_output = b.addInstallArtifact(lib, .{
