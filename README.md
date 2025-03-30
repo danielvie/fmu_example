@@ -14,6 +14,7 @@ This project requires the following dependencies:
 - Python 3.10+  
 - uv  
 - Zig 0.14.0
+- Docker (optional)
 
 Instructions for installing each are provided below.
 
@@ -51,6 +52,17 @@ Instructions for installing each are provided below.
   zig version
   ```
 
+### ➡️ **Docker**  
+  **Note:** Docker is optional and not required for core functionality.
+
+  A platform for containerizing applications (optional - only needed to test the FMU create on Linux environment).  
+  **Installation**:  
+  - Download from [docker.com](https://www.docker.com/get-started/).  
+  - Verify: 
+  ```powershell
+  docker --version
+  ```
+
 ## ⌨️ Main Commands
 
 Below are the primary commands for interacting with this project, powered by Taskfile.
@@ -62,8 +74,16 @@ Below are the primary commands for interacting with this project, powered by Tas
 
 - **`task main`**  
   Builds the FMU (as above) and runs it using the provided Python example.  
-  - Prerequisites: Python 3.10+, uv, and the FMU built via `task build`.  
+  - Prerequisites: Zig 0.14.0, Python 3.10+, uv, and the FMU built via `task build`.  
   - Behavior: Executes the Python script to simulate or test the FMU.
+
+- **`task docker`**  
+  Builds the FMU (as above) and runs it using the provided Python example.  
+  - Prerequisites: Zig 0.14.0, Docker, and the FMU built via `task build`.  
+  - Behavior: Executes the Python script to simulate or test the FMU.
+
+- **`task clean`**  
+  Clean artifacts and cache from the build.
 
 ## 🚀 Getting Started
 
