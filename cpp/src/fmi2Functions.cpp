@@ -72,12 +72,19 @@ fmi2Status fmi2Reset(fmi2Component c) {
     return fmi2OK;
 }
 
-fmi2Status fmi2GetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2Real value[]) {
-    ModelInstance* comp = (ModelInstance*)c;
+fmi2Status fmi2GetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2Real value[])
+{
+    ModelInstance *comp = (ModelInstance *)c;
     for (size_t i = 0; i < nvr; i++) {
-        if (vr[i] == VR_HEIGHT) value[i] = comp->model->get_height();
-        else if (vr[i] == VR_VELOCITY) value[i] = comp->model->get_velocity();
-        else return fmi2Error;
+        if (vr[i] == VR_HEIGHT) {
+            value[i] = comp->model->get_height();
+        }
+        else if (vr[i] == VR_VELOCITY) {
+            value[i] = comp->model->get_velocity();
+        }
+        else {
+            return fmi2Error;
+        }
     }
     return fmi2OK;
 }
@@ -85,8 +92,12 @@ fmi2Status fmi2GetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nv
 fmi2Status fmi2SetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2Real value[]) {
     ModelInstance* comp = (ModelInstance*)c;
     for (size_t i = 0; i < nvr; i++) {
-        if (vr[i] == VR_HEIGHT) comp->model->set_height(value[i]);
-        else if (vr[i] == VR_VELOCITY) comp->model->set_velocity(value[i]);
+        if (vr[i] == VR_HEIGHT) {
+            comp->model->set_height(value[i]);
+        }
+        else if (vr[i] == VR_VELOCITY) {
+            comp->model->set_velocity(value[i]);
+        }
         else return fmi2Error;
     }
     return fmi2OK;
