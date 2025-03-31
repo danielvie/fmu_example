@@ -15,6 +15,12 @@ tasks:
     cmds:
       - cd cpp && task build
       - uv run z_create_fmu.py
+      
+  all:
+    aliases: ["a"]
+    deps: ["build"]
+    cmds:
+     - cd python_test && task
 
   test:
     aliases: ["t"]

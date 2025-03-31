@@ -66,7 +66,7 @@ Below are the primary commands for interacting with this project, powered by Tas
   - Prerequisites: Zig 0.14.0 must be installed and available in your PATH.  
   - Output: Generates the FMU binary in the project directory.
 
-- **`task main`**  
+- **`task test`**  
   Builds the FMU (as above) and runs it using the provided Python example.  
   - Prerequisites: Zig 0.14.0, Python 3.10+, uv, and the FMU built via `task build`.  
   - Behavior: Executes the Python script to simulate or test the FMU.
