@@ -33,6 +33,6 @@ tasks:
     cmds:
      - cd cpp && task clean
      - cd python_test && task clean
-     - rm -rf cpp_fmu_out/
-    #  - rm -rf .venv
+     - rm -rf z_fmu_out/
+     - rm -rf .venv
     ignore_error: true

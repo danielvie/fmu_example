@@ -13,8 +13,6 @@ This project requires the following dependencies:
 - Taskfile  
 - Python 3.10+  
 - uv  
-- Zig 0.14.0
-- 7zip
 - Docker (optional)
 
 Instructions for installing each are provided below.
@@ -28,13 +26,11 @@ Instructions for installing each are provided below.
   pip install go-task-bin
   ```
 
-
 ### ➡️ **Python 3.10+**  
   Required for running the Python-based FMU example.  
   **Installation**:  
   - Download from [python.org](https://www.python.org/downloads/)
   - Verify: `python --version` (or `python3 --version` on Linux/Mac).
-
 
 ### ➡️ **uv**  
   A fast Python package manager and dependency resolver.  
@@ -48,24 +44,6 @@ Instructions for installing each are provided below.
   - Verify:
   ```powershell
   uv --version
-  ```
-
-### ➡️ **Zig 0.14.0**  
-  A programming language and toolchain used for building the C++ components.  
-  **Installation**:  
-  - Download the 0.14.0 release from [ziglang.org](https://ziglang.org/download/).  
-  - Verify: (should output `0.14.0`).
-  ```powershell
-  zig version
-  ```
-
-### ➡️ **7-Zip 24.08**  
-  A free and open-source file archiver used for creating and extracting compressed archives like ZIP and FMU files.  
-  **Installation**:  
-  - Download from [7-zip.org](https://www.7-zip.org/download.html).  
-  - Verify: (should output `7-Zip 24.08 (x64)` or similar, depending on your architecture).  
-  ```powershell
-  7z
   ```
 
 ### ➡️ **Docker**  
