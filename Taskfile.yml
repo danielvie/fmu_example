@@ -2,19 +2,24 @@ version: '3'
 
 tasks:
 
-  default:
-    deps: [main]
-
-  main:
-    aliases: ["m"]
-    deps: ["build"]
+  init:
     cmds:
-     - cd python_test && task
-     
+      - uv sync
+
+  fmu:
+    cmds:
+      - uv run z_create_fmu.py
+
   build:
     aliases: ["b"]
     cmds:
       - cd cpp && task build
+      - uv run z_create_fmu.py
+
+  test:
+    aliases: ["t"]
+    cmds:
+     - cd python_test && task
      
   docker:
     aliases: ["d"]
@@ -29,4 +34,5 @@ tasks:
      - cd cpp && task clean
      - cd python_test && task clean
      - rm -rf cpp_fmu_out/
+    #  - rm -rf .venv
     ignore_error: true

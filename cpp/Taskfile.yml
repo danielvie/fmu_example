@@ -8,7 +8,8 @@ tasks:
     aliases: ["b"]
     cmds:
       # building libraries
-      - zig build
+      # - zig build
+      - uv run -m ziglang build
       # copying windows lib
       - mkdir -p z_fmu_out/binaries/win64
       - cp zig-out/x86_64-windows/BouncingBall.dll z_fmu_out/binaries/win64
@@ -19,10 +20,10 @@ tasks:
       - cp -r src/*.cpp z_fmu_out/
       - cp -r src/modelDescription.xml z_fmu_out/
       # creating zipfile
-      - 7z a -tzip BouncingBall.fmu ./z_fmu_out/*
+      # - 7z a -tzip BouncingBall.fmu ./z_fmu_out/*
       # copying result to `fmu_out`
-      - mkdir -p ../cpp_fmu_out
-      - cp BouncingBall.fmu ../cpp_fmu_out/
+      # - mkdir -p ../cpp_fmu_out
+      # - cp BouncingBall.fmu ../cpp_fmu_out/
 
   clean:
     aliases: ["c"]
