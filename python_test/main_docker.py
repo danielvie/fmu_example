@@ -23,7 +23,7 @@ def try_catch(fun: callable):
 def main():
 
     # loading fmu
-    fmu_path = 'cpp_fmu_out/BouncingBall.fmu'
+    fmu_path = 'z_fmu_out/BouncingBall.fmu'
     
     print(f'reading {fmu_path}...')
     assert Path(fmu_path).is_file() == True

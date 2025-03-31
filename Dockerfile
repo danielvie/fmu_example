@@ -17,9 +17,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     
 # Copy python project
 # COPY ./python_test/.python_version .
-COPY python_test/.python-version .
 COPY python_test/main_docker.py .
-COPY python_test/pyproject.toml .
+COPY ../pyproject.toml .
 
 RUN uv sync
     
