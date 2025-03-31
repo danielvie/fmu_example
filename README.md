@@ -30,6 +30,11 @@ Instructions for installing each are provided below.
   - Download from [python.org](https://www.python.org/downloads/)
   - Verify: `python --version` (or `python3 --version` on Linux/Mac).
 
+  it can also be installed with `pip`: 
+  ```powershell
+  pip install go-task-bin
+  ```
+
 ### ➡️ **uv**  
   A fast Python package manager and dependency resolver.  
   **Installation**:  
