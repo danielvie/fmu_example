@@ -23,7 +23,6 @@ tasks:
      
   docker:
     aliases: ["d"]
-    deps: ["build"]
     cmds:
       - docker build -t python_fmu_test .
       - docker run -v .\\z_fmu_out:/app/z_fmu_out python_fmu_test

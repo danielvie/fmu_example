@@ -19,11 +19,12 @@ def fmu_prepare(target_path: str):
     # creating folders
     Path(f"{target_path}/binaries/win64").mkdir(parents=True, exist_ok=True)
     Path(f"{target_path}/binaries/linux64").mkdir(parents=True, exist_ok=True)
+    Path(f"{target_path}/src").mkdir(parents=True, exist_ok=True)
 
     shutil.copy("cpp/zig-out/x86_64-windows/BouncingBall.dll", f"{target_path}/binaries/win64")
     shutil.copy("cpp/zig-out/x86_64-linux-gnu/libBouncingBall.so", f"{target_path}/binaries/linux64/BouncingBall.so")
     for file in glob.glob("cpp/src/*.cpp"):
-        shutil.copy(file, f"{target_path}/")
+        shutil.copy(file, f"{target_path}/src/")
     shutil.copy("cpp/src/modelDescription.xml", f"{target_path}/")
 
 fmu_prepare('z_fmu_out/temp')
