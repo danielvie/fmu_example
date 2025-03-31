@@ -23,6 +23,11 @@ Instructions for installing each are provided below.
   A task runner to simplify build and run commands.  
   **Installation**:  
   - Download and install from the official site: [go-task.github.io](https://taskfile.dev/installation/).  
+  it can also be installed with `pip`: 
+  ```powershell
+  pip install go-task-bin
+  ```
+
 
 ### ➡️ **Python 3.10+**  
   Required for running the Python-based FMU example.  
@@ -30,10 +35,6 @@ Instructions for installing each are provided below.
   - Download from [python.org](https://www.python.org/downloads/)
   - Verify: `python --version` (or `python3 --version` on Linux/Mac).
 
-  it can also be installed with `pip`: 
-  ```powershell
-  pip install go-task-bin
-  ```
 
 ### ➡️ **uv**  
   A fast Python package manager and dependency resolver.  
