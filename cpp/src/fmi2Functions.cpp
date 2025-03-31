@@ -23,7 +23,7 @@ fmi2Component fmi2Instantiate(fmi2String instanceName, fmi2Type fmuType,
                               fmi2Boolean visible, fmi2Boolean loggingOn) {
     ModelInstance* comp = new ModelInstance();
     comp->model = std::make_shared<BouncingBall>();
-    comp->functions = (fmi2CallbackFunctions*)functions;
+    comp->functions = const_cast<fmi2CallbackFunctions*>(functions);
     comp->loggingOn = loggingOn;
     return (fmi2Component)comp;
 }

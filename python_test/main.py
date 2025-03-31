@@ -33,16 +33,12 @@ def main():
     fmpy.dump(fmu_path)
 
     # simulate
-    result = try_catch(lambda: fmpy.simulate_fmu(fmu_path, start_time=0.0, stop_time=10.0, step_size=0.01))
-    
-    if result.fail():
-        print("ERROR: ", result.error)
-        return
+    result = fmpy.simulate_fmu(fmu_path, start_time=0.0, stop_time=10.0, step_size=0.01)
     
     # extract results
-    time = result.value['time']
-    height = result.value['h']
-    velocity = result.value['v']
+    time = result['time']
+    height = result['h']
+    velocity = result['v']
 
     # plot
     plt.figure()
