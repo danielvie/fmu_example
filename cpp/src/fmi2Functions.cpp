@@ -13,30 +13,31 @@ typedef struct {
 #define VR_HEIGHT 0  // Value reference for height
 #define VR_VELOCITY 1  // Value reference for velocity
 
-// Helper macros
-#define CHECK_STATUS(S) if (S != fmi2OK) return S
-
 // Mandatory FMI 2.0 functions
 fmi2Component fmi2Instantiate(fmi2String instanceName, fmi2Type fmuType,
                               fmi2String fmuGUID, fmi2String fmuResourceLocation,
                               const fmi2CallbackFunctions* functions,
                               fmi2Boolean visible, fmi2Boolean loggingOn) {
-    ModelInstance* comp = new ModelInstance();
+    std::shared_ptr<ModelInstance> comp = std::make_shared<ModelInstance>();
     comp->model = std::make_shared<BouncingBall>();
     comp->functions = const_cast<fmi2CallbackFunctions*>(functions);
     comp->loggingOn = loggingOn;
-    return (fmi2Component)comp;
+    return (fmi2Component)comp.get();
 }
 
 void fmi2FreeInstance(fmi2Component c) {
-    ModelInstance* comp = (ModelInstance*)c;
-    comp->model.reset();
-    delete comp;
+    ModelInstance* comp = static_cast<ModelInstance*>(c);
+    if (comp) {
+        comp->model.reset();
+    }
 }
 
 fmi2Status fmi2SetDebugLogging(fmi2Component c, fmi2Boolean loggingOn,
                                size_t nCategories, const fmi2String categories[]) {
-    ModelInstance* comp = (ModelInstance*)c;
+    ModelInstance* comp = static_cast<ModelInstance*>(c);
+    if (!comp) {
+        return fmi2Error;
+    }
     comp->loggingOn = loggingOn;
     return fmi2OK;
 }
@@ -57,7 +58,10 @@ fmi2Status fmi2ExitInitializationMode(fmi2Component c) {
 
 fmi2Status fmi2DoStep(fmi2Component c, fmi2Real currentCommunicationPoint,
                       fmi2Real communicationStepSize, fmi2Boolean noSetFMUStatePriorToCurrentPoint) {
-    ModelInstance* comp = (ModelInstance*)c;
+    ModelInstance* comp = static_cast<ModelInstance*>(c);
+    if (!comp) {
+        fmi2Error;
+    }
     comp->model->do_step(currentCommunicationPoint, communicationStepSize);
     return fmi2OK;
 }
@@ -67,7 +71,10 @@ fmi2Status fmi2Terminate(fmi2Component c) {
 }
 
 fmi2Status fmi2Reset(fmi2Component c) {
-    ModelInstance* comp = (ModelInstance*)c;
+    ModelInstance* comp = static_cast<ModelInstance*>(c);
+    if (!comp) {
+        return fmi2Error;
+    }
     comp->model.reset();
     comp->model = std::make_shared<BouncingBall>();
     return fmi2OK;
@@ -75,7 +82,11 @@ fmi2Status fmi2Reset(fmi2Component c) {
 
 fmi2Status fmi2GetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2Real value[])
 {
-    ModelInstance *comp = (ModelInstance *)c;
+    ModelInstance* comp = static_cast<ModelInstance*>(c);
+    if (!comp) {
+        return fmi2Error;
+    }
+
     for (size_t i = 0; i < nvr; i++) {
         if (vr[i] == VR_HEIGHT) {
             value[i] = comp->model->get_height();
@@ -91,7 +102,11 @@ fmi2Status fmi2GetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nv
 }
 
 fmi2Status fmi2SetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2Real value[]) {
-    ModelInstance* comp = (ModelInstance*)c;
+    ModelInstance* comp = static_cast<ModelInstance*>(c);
+    if (!comp) {
+        return fmi2Error;
+    }
+
     for (size_t i = 0; i < nvr; i++) {
         if (vr[i] == VR_HEIGHT) {
             comp->model->set_height(value[i]);
