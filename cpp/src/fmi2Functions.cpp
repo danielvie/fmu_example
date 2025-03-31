@@ -1,10 +1,11 @@
 #include "fmi2Functions.h"
 #include "BouncingBall.cpp"
 #include <cstring>
+#include <memory>
 
 // FMI instance data
 typedef struct {
-    BouncingBall* model;
+    std::shared_ptr<BouncingBall> model;
     fmi2CallbackFunctions* functions;
     fmi2Boolean loggingOn;
 } ModelInstance;
@@ -21,7 +22,7 @@ fmi2Component fmi2Instantiate(fmi2String instanceName, fmi2Type fmuType,
                               const fmi2CallbackFunctions* functions,
                               fmi2Boolean visible, fmi2Boolean loggingOn) {
     ModelInstance* comp = new ModelInstance();
-    comp->model = new BouncingBall();
+    comp->model = std::make_shared<BouncingBall>();
     comp->functions = (fmi2CallbackFunctions*)functions;
     comp->loggingOn = loggingOn;
     return (fmi2Component)comp;
@@ -29,7 +30,7 @@ fmi2Component fmi2Instantiate(fmi2String instanceName, fmi2Type fmuType,
 
 void fmi2FreeInstance(fmi2Component c) {
     ModelInstance* comp = (ModelInstance*)c;
-    delete comp->model;
+    comp->model.reset();
     delete comp;
 }
 
@@ -67,8 +68,8 @@ fmi2Status fmi2Terminate(fmi2Component c) {
 
 fmi2Status fmi2Reset(fmi2Component c) {
     ModelInstance* comp = (ModelInstance*)c;
-    delete comp->model;
-    comp->model = new BouncingBall();
+    comp->model.reset();
+    comp->model = std::make_shared<BouncingBall>();
     return fmi2OK;
 }
 
