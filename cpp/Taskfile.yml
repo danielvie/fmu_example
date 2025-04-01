@@ -8,7 +8,6 @@ tasks:
     aliases: ["b"]
     cmds:
       # building libraries
-      # - zig build
       - uv run -m ziglang build
 
   clean:
@@ -17,5 +16,4 @@ tasks:
       - rm -rf .zig-cache
       - rm -rf zig-out
       - rm -rf z_fmu_out
-      - rm -rf *.fmu
     ignore_error: true

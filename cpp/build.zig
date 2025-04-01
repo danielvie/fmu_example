@@ -1,10 +1,13 @@
 const std = @import("std");
 
+fn make_target(query: std.Target.Query) std.Target.Query {
+    return query;
+}
+
 pub fn build(b: *std.Build) !void {
     const targets: []const std.Target.Query = &.{
-        .{ .cpu_arch = .x86_64, .os_tag = .windows },
-        .{ .cpu_arch = .x86_64, .os_tag = .linux, .abi = .gnu },
-        // .{ .cpu_arch = .x86_64, .os_tag = .linux, .abi = .musl },
+        make_target(.{ .cpu_arch = .x86_64, .os_tag = .windows }),
+        make_target(.{ .cpu_arch = .x86_64, .os_tag = .linux, .abi = .gnu }),
     };
 
     const optimize = b.standardOptimizeOption(.{});
@@ -33,7 +36,7 @@ pub fn build(b: *std.Build) !void {
             .flags = &cppflags,
         });
         lib.addIncludePath(b.path("include"));
-        lib.addIncludePath(b.path("fmi2/headers/"));
+        lib.addIncludePath(b.path("lib/fmi2/headers/"));
 
         const target_output = b.addInstallArtifact(lib, .{
             .dest_dir = .{

@@ -13,6 +13,6 @@ tasks:
   clean:
     aliases: ["c"]
     cmds:
-     - rm -rf .venv
+     - 
 
     ignore_error: true
