@@ -60,7 +60,7 @@ fmi2Status fmi2DoStep(fmi2Component c, fmi2Real currentCommunicationPoint,
                       fmi2Real communicationStepSize, fmi2Boolean noSetFMUStatePriorToCurrentPoint) {
     ModelInstance* comp = static_cast<ModelInstance*>(c);
     if (!comp) {
-        fmi2Error;
+        return fmi2Error;
     }
     comp->model->do_step(currentCommunicationPoint, communicationStepSize);
     return fmi2OK;
@@ -120,98 +120,98 @@ fmi2Status fmi2SetReal(fmi2Component c, const fmi2ValueReference vr[], size_t nv
 }
 
 fmi2Status fmi2GetInteger(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2Integer value[]) {
-    return fmi2Error; // No integers in this model
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetBoolean(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2Boolean value[]) {
-    return fmi2Error; // No booleans in this model
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetString(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, fmi2String value[]) {
-    return fmi2Error; // No strings in this model
+    return fmi2Error;
 }
 
 fmi2Status fmi2SetInteger(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2Integer value[]) {
-    return fmi2Error; // No integers in this model
+    return fmi2Error;
 }
 
 fmi2Status fmi2SetBoolean(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2Boolean value[]) {
-    return fmi2Error; // No booleans in this model
+    return fmi2Error;
 }
 
 fmi2Status fmi2SetString(fmi2Component c, const fmi2ValueReference vr[], size_t nvr, const fmi2String value[]) {
-    return fmi2Error; // No strings in this model
+    return fmi2Error;
 }
 
 fmi2String fmi2GetTypesPlatform(void) {
-    return "default"; // Standard FMI platform type
+    return "default";
 }
 
 fmi2String fmi2GetVersion(void) {
-    return "2.0"; // FMI version
+    return "2.0";
 }
 
 // Optional Co-Simulation functions (stubs)
 fmi2Status fmi2GetFMUstate(fmi2Component c, fmi2FMUstate* FMUstate) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2SetFMUstate(fmi2Component c, fmi2FMUstate FMUstate) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2FreeFMUstate(fmi2Component c, fmi2FMUstate* FMUstate) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2SerializedFMUstateSize(fmi2Component c, fmi2FMUstate FMUstate, size_t* size) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2SerializeFMUstate(fmi2Component c, fmi2FMUstate FMUstate, fmi2Byte serializedState[], size_t size) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2DeSerializeFMUstate(fmi2Component c, const fmi2Byte serializedState[], size_t size, fmi2FMUstate* FMUstate) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetDirectionalDerivative(fmi2Component c, const fmi2ValueReference vUnknown_ref[], size_t nUnknown,
                                         const fmi2ValueReference vKnown_ref[], size_t nKnown,
                                         const fmi2Real dvKnown[], fmi2Real dvUnknown[]) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2SetRealInputDerivatives(fmi2Component c, const fmi2ValueReference vr[], size_t nvr,
                                        const fmi2Integer order[], const fmi2Real value[]) {
-    return fmi2Error; // Not supported (no inputs or interpolation)
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetRealOutputDerivatives(fmi2Component c, const fmi2ValueReference vr[], size_t nvr,
                                         const fmi2Integer order[], fmi2Real value[]) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2CancelStep(fmi2Component c) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetStatus(fmi2Component c, const fmi2StatusKind s, fmi2Status* value) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetRealStatus(fmi2Component c, const fmi2StatusKind s, fmi2Real* value) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetIntegerStatus(fmi2Component c, const fmi2StatusKind s, fmi2Integer* value) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetBooleanStatus(fmi2Component c, const fmi2StatusKind s, fmi2Boolean* value) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
 
 fmi2Status fmi2GetStringStatus(fmi2Component c, const fmi2StatusKind s, fmi2String* value) {
-    return fmi2Error; // Not supported
+    return fmi2Error;
 }
