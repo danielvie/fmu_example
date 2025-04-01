@@ -10,12 +10,18 @@ This repository is a lab for testing and learning how FMUs (Functional Mock-up U
 ## 🛠️ Dependencies for this project
 
 This project requires the following dependencies:
-- Taskfile  
 - Python 3.10+  
+- Taskfile  
 - uv  
 - Docker (optional)
 
 Instructions for installing each are provided below.
+
+### ➡️ **Python 3.10+**  
+  Required for running the Python-based FMU example.  
+  **Installation**:  
+  - Download from [python.org](https://www.python.org/downloads/)
+  - Verify: `python --version` (or `python3 --version` on Linux/Mac).
 
 ### ➡️ **Taskfile**  
   A task runner to simplify build and run commands.  
@@ -25,12 +31,6 @@ Instructions for installing each are provided below.
   ```powershell
   pip install go-task-bin
   ```
-
-### ➡️ **Python 3.10+**  
-  Required for running the Python-based FMU example.  
-  **Installation**:  
-  - Download from [python.org](https://www.python.org/downloads/)
-  - Verify: `python --version` (or `python3 --version` on Linux/Mac).
 
 ### ➡️ **uv**  
   A fast Python package manager and dependency resolver.  
@@ -96,7 +96,7 @@ task build
 ```
 5. Run to build and test the FMU using Python.
 ```powershell
-task main
+task test
 ```
 
 <!-- ## Contributing
