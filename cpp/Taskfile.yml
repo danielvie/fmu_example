@@ -13,7 +13,5 @@ tasks:
   clean:
     aliases: ["c"]
     cmds:
-      - rm -rf .zig-cache
-      - rm -rf zig-out
-      - rm -rf z_fmu_out
-    ignore_error: true
+      - python ../z_clean.py .zig-cache
+      - python ../z_clean.py zig-out

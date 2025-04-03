@@ -38,5 +38,10 @@ tasks:
     cmds:
      - cd cpp && task clean
      - cd python_test && task clean
-     - rm -rf z_fmu_out/
-    ignore_error: true
+     - python z_clean.py z_fmu_out/
+  
+  clean_all:
+    aliases: ["ca"]
+    deps: ["clean"]
+    cmds:
+     - python z_clean.py .venv/
