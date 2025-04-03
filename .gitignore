@@ -15,3 +15,6 @@ uv.lock
 # Folders
 cpp_fmu_out/
 z_fmu_out/
+.vscode/
+
+.DS_Store

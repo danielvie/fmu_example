@@ -30,10 +30,12 @@ def main():
     assert Path(fmu_path).is_file() == True
 
     # dumping model info
-    fmpy.dump(fmu_path)
+    # fmpy.dump(fmu_path)
 
     # simulate
     result = fmpy.simulate_fmu(fmu_path, start_time=0.0, stop_time=10.0, step_size=0.01)
+    # model_description = fmpy.read_model_description(fmu_path)
+    # fmu = fmpy.instantiate_fmu(model_description=model_description)
     
     # extract results
     time = result['time']

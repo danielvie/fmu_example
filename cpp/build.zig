@@ -8,6 +8,7 @@ pub fn build(b: *std.Build) !void {
     const targets: []const std.Target.Query = &.{
         make_target(.{ .cpu_arch = .x86_64, .os_tag = .windows }),
         make_target(.{ .cpu_arch = .x86_64, .os_tag = .linux, .abi = .gnu }),
+        make_target(.{ .cpu_arch = .aarch64, .os_tag = .macos }),
     };
 
     const optimize = b.standardOptimizeOption(.{});
