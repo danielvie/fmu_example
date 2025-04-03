@@ -10,6 +10,12 @@ tasks:
       # building libraries
       - uv run -m ziglang build
 
+  buildpy:
+    aliases: ["b"]
+    cmds:
+      # building libraries
+      - python -m ziglang build
+
   clean:
     aliases: ["c"]
     cmds:

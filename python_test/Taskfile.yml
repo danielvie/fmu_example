@@ -10,6 +10,10 @@ tasks:
     cmds:
      - uv run main.py
 
+  testpy:
+    cmds:
+     - python main.py
+
   clean:
     aliases: ["c"]
     cmds:

@@ -10,11 +10,21 @@ tasks:
     cmds:
       - uv run z_create_fmu.py
 
+  fmu_py:
+    cmds:
+      - python z_create_fmu.py
+
   build:
     aliases: ["b"]
     cmds:
       - cd cpp && task build
       - uv run z_create_fmu.py
+
+  buildpy:
+    aliases: ["b"]
+    cmds:
+      - cd cpp && task buildpy
+      - python z_create_fmu.py
       
   all:
     aliases: ["a"]
@@ -26,6 +36,11 @@ tasks:
     aliases: ["t"]
     cmds:
      - cd python_test && task
+
+  testpy:
+    cmds:
+     - cd python_test && task testpy
+
      
   docker:
     aliases: ["d"]
