@@ -2,7 +2,7 @@ version: '3'
 
 tasks:
   default:
-    deps: ["b"]
+    deps: ["build"]
 
   build:
     aliases: ["b"]

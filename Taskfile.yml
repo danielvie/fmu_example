@@ -21,7 +21,7 @@ tasks:
       - uv run z_create_fmu.py
 
   buildpy:
-    aliases: ["b"]
+    aliases: ["bpy"]
     cmds:
       - cd cpp && task buildpy
       - python z_create_fmu.py

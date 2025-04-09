@@ -41,8 +41,10 @@ def main():
     time = result['time']
     height = result['h']
     velocity = result['v']
+    
+    print(time)
 
-    # plot
+    # # plot
     plt.figure()
     plt.subplot(2, 1, 1)
     plt.plot(time, height, label='Height (m)')
